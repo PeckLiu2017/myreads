@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ListBooks from './ListBooks'
 
 class Book extends Component {
   render() {
