@@ -17,6 +17,7 @@ class BookShelf extends Component {
                       title={ book.title }
                       imageLinks={ book.imageLinks }
                       shelf={ book.shelf }
+                      changeBookShelf={this.props.changeBookShelf}
                     />
                   </li>
               ))

@@ -7,6 +7,8 @@ class ListBooks extends Component {
   }
 
   render() {
+    const { changeBookShelf } = this.props;
+
     return (
       <div className="list-books">
         <div className="list-books-title">
@@ -17,14 +19,17 @@ class ListBooks extends Component {
             <BookShelf
                name="Currently Reading"
                books={this.classifyBooks('currentlyReading')}
+               changeBookShelf={changeBookShelf}
             />
             <BookShelf
                name="Want to Read"
                books={this.classifyBooks('wantToRead')}
+               changeBookShelf={changeBookShelf}
             />
             <BookShelf
                name="Read"
                books={this.classifyBooks('read')}
+               changeBookShelf={changeBookShelf}
             />
           </div>
         </div>

@@ -5,15 +5,12 @@ import './App.css'
 import * as BooksAPI from './utils/BooksAPI'
 
 class App extends Component {
-  state = {
-    /**
-     * TODO: Instead of using this state variable to keep track of which page
-     * we're on, use the URL in the browser's address bar. This will ensure that
-     * users can use the browser's back and forward buttons to navigate between
-     * pages, as well as provide a good URL they can bookmark and share.
-     */
-    showSearchPage: false,
-    books: []
+  constructor () {
+    super();
+    this.state = {
+      showSearchPage: false,
+      books: []
+    };
   }
 
   componentDidMount() {
@@ -22,12 +19,23 @@ class App extends Component {
     })
   }
 
+  changeBookShelf = (currentHandleBook, value) => {
+    const { books } = this.state;
 
+    const currentLocalBookIndex = books.findIndex((book) =>{
+      return book.id === currentHandleBook.id
+    })
+
+    books[currentLocalBookIndex].shelf = value;
+    this.setState({ books: books });
+
+    BooksAPI.update(currentHandleBook.id, value)
+  }
 
   render() {
     return (
       <div className="app">
-      {this.state.showSearchPage ? <SearchBooks/> : <ListBooks books={this.state.books}/>}
+      {this.state.showSearchPage ? <SearchBooks changeBookShelf={this.changeBookShelf}/> : <ListBooks books={this.state.books} changeBookShelf={this.changeBookShelf}/>}
       </div>
     )
   }
