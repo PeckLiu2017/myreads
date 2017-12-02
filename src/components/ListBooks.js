@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import BookShelf from './BookShelf'
 
 class ListBooks extends Component {
-  render() {
-    console.log(this.props.books);
+  classifyBooks = (shelf) => {
+    return this.props.books.filter((book) => book.shelf === shelf)
+  }
 
+  render() {
     return (
       <div className="list-books">
         <div className="list-books-title">
@@ -14,6 +16,7 @@ class ListBooks extends Component {
           <div>
             <BookShelf
                name="Currently Reading"
+               books={this.classifyBooks('currentlyReading')}
             />
             <div className="bookshelf">
               <h2 className="bookshelf-title">Want to Read</h2>

@@ -2,11 +2,16 @@ import React, { Component } from 'react'
 import Book from './Book'
 
 class BookShelf extends Component {
+  state = {
+    name: this.props.name,
+    books: this.props.books
+  }
 
   render() {
+    console.log(this.props.books);
     return (
       <div className="bookshelf">
-        <h2 className="bookshelf-title">{this.props.name}</h2>
+        <h2 className="bookshelf-title">{this.state.name}</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
             <li>
