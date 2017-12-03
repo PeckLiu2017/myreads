@@ -43,20 +43,20 @@ class App extends Component {
 
     /*
      * if currentLocalBookIndex < 0 ,it's a searched book to be added in shelves that doesn't exsit in local machine
-     * just push it into local books array and update this books array
-     * otherwise, direct change its shelf and update the local books array
+     * just push it into local books array
+     * otherwise, direct change its shelf
      */
     if (currentLocalBookIndex < 0) {
       books.push(currentHandleBook);
-      this.setState({ books: books });
       currentLocalBookIndex = books.length - 1;
     } else {
       books[currentLocalBookIndex].shelf = value;
-      this.setState({ books: books });
     }
 
     /* synchronize data to server */
-    BooksAPI.update(books[currentLocalBookIndex], value)
+    BooksAPI.update(books[currentLocalBookIndex], value).then(
+      this.setState({ books: books })
+    );
   }
 
   render() {
