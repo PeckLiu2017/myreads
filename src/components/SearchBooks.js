@@ -16,14 +16,17 @@ class SearchBooks extends Component {
   }
 
   updateQuery = (query) => {
-    this.setState({ query: query.trim() });
-    this.searchedBooksFromServer(query);
+    if (query.length > 0) {
+      this.setState({ query: query.trim() });
+      this.searchedBooksFromServer(query);
+    } else {
+      this.setState({ searchedBooksResult: [] });
+    }
   }
 
   searchedBooksFromServer = (query) => {
     BooksAPI.search(query, 20).then((response) => {
       if (response && response.length > 0) {
-
         this.setState({ searchedBooksResult: response });
      }
       console.log(response);
