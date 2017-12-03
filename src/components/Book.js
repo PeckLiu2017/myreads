@@ -1,19 +1,26 @@
 import React, { Component } from 'react'
 
-
+/**
+ * @description
+ * @method updateBookShelf Change shelves for current book
+ * This is a Component that render books in Component BookShelf
+ */
 class Book extends Component {
   state = {
     shelf: ''
   }
 
-  /*
-   * this.props {id: "sJf1vQAACAAJ", authors: Array(2), title: "Learning Web Development with React and Bootstrap", imageLinks: {…}, shelf: "wantToRead", …}
+  /**
+   * @description
+   * @param {string} value The shelf to be moved into
+   * @method changeBookShelf Get from <Book/> tag in BooksShelf.js
    */
   updateBookShelf(value){
     this.props.changeBookShelf(this.props, value);
     this.setState({ shelf: value });
   }
 
+  /* Set shelf for book once Book Component has been mounted */ 
   componentDidMount() {
     const { shelf } = this.props;
     this.setState({ shelf });

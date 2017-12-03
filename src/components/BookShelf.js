@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import Book from './Book'
 
+/**
+ * @description
+ * @method changeBookShelf Get from the <BookShelf/> tag in ListBooks.js
+ * This is a Component that render shelf in Component ListBooks
+ */
 class BookShelf extends Component {
   render() {
     return (

@@ -4,14 +4,15 @@ import { Link } from 'react-router-dom';
 
 /**
  * @description
- * @method classifyBooks filter books for different shelf
+ * @method classifyBooks
+ * @method changeBookShelf Get from the <ListBooks/> tag in App.js
  * This is a Component that render main page
  */
 class ListBooks extends Component {
   /**
    * @description
    * @param {string} shelf shelf name
-   * filter books for different shelf
+   * Filter books for different shelf
    */
   classifyBooks = (shelf) => {
     return this.props.books.filter((book) => book.shelf === shelf)
