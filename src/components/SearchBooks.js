@@ -10,30 +10,35 @@ class SearchBooks extends Component {
   constructor () {
     super();
     this.state = {
-        query: '',
         searchedBooksResult: []
     };
   }
 
+  /* it show s wrong when i type upper case letter */
   updateQuery = (query) => {
     if (query.length > 0) {
-      this.setState({ query: query.trim() });
-      this.searchedBooksFromServer(query);
+      this.searchedBooksFromServer(query.trim().toLowerCase());
     } else {
       this.setState({ searchedBooksResult: [] });
     }
   }
 
   searchedBooksFromServer = (query) => {
+    console.log(query);
     BooksAPI.search(query, 20).then((response) => {
       if (response && response.length > 0) {
-        this.setState({ searchedBooksResult: response });
+        let showingBooks;
+        showingBooks = response.filter((book) =>
+          book.id && book.imageLinks && book.authors && book.title
+        );
+        this.setState({ searchedBooksResult: showingBooks });
      }
-      console.log(response);
     });
   };
 
   render() {
+    const { changeBookShelf } = this.props;
+
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -62,7 +67,7 @@ class SearchBooks extends Component {
                   authors={ book.authors }
                   title={ book.title }
                   imageLinks={ book.imageLinks }
-                  changeBookShelf={book.changeBookShelf}
+                  changeBookShelf={changeBookShelf}
                 />
               </li>
             ))
