@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import * as BooksAPI from '../utils/BooksAPI';
 import Book from '../components/Book';
-import escapeRegExp from 'escape-string-regexp';
-import sortBy from 'sort-by';
 
 
 class SearchBooks extends Component {
@@ -32,7 +30,6 @@ class SearchBooks extends Component {
         );
         showingBooks.forEach(function(book) {
           book.shelf = '';
-          console.log(book.shelf);
         });
         this.setState({ searchedBooksResult: showingBooks });
      }
