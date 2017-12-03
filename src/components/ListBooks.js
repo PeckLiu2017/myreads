@@ -2,8 +2,17 @@ import React, { Component } from 'react'
 import BookShelf from './BookShelf'
 import { Link } from 'react-router-dom';
 
-
+/**
+ * @description
+ * @method classifyBooks filter books for different shelf
+ * This is a Component that render main page
+ */
 class ListBooks extends Component {
+  /**
+   * @description
+   * @param {string} shelf shelf name
+   * filter books for different shelf
+   */
   classifyBooks = (shelf) => {
     return this.props.books.filter((book) => book.shelf === shelf)
   }
