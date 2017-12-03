@@ -10,7 +10,6 @@ class Book extends Component {
    * this.props {id: "sJf1vQAACAAJ", authors: Array(2), title: "Learning Web Development with React and Bootstrap", imageLinks: {…}, shelf: "wantToRead", …}
    */
   updateBookShelf(value){
-    console.log(this.props);
     this.props.changeBookShelf(this.props, value);
     this.setState({ shelf: value });
   }

@@ -24,13 +24,16 @@ class SearchBooks extends Component {
   }
 
   searchedBooksFromServer = (query) => {
-    console.log(query);
     BooksAPI.search(query, 20).then((response) => {
       if (response && response.length > 0) {
         let showingBooks;
         showingBooks = response.filter((book) =>
           book.id && book.imageLinks && book.authors && book.title
         );
+        showingBooks.forEach(function(book) {
+          book.shelf = '';
+          console.log(book.shelf);
+        });
         this.setState({ searchedBooksResult: showingBooks });
      }
     });

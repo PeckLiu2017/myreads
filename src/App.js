@@ -25,12 +25,19 @@ class App extends Component {
   changeBookShelf = (currentHandleBook, value) => {
     const { books } = this.state;
 
-    const currentLocalBookIndex = books.findIndex((book) =>{
+    let currentLocalBookIndex = books.findIndex((book) =>{
       return book.id === currentHandleBook.id
     })
 
-    books[currentLocalBookIndex].shelf = value;
-    this.setState({ books: books });
+    /* 如果 currentLocalBookIndex < 0 说明本地没有这本书 */
+    if (currentLocalBookIndex < 0) {
+      books.push(currentHandleBook);
+      this.setState({ books: books });
+      currentLocalBookIndex = books.length - 1;
+    } else {
+      books[currentLocalBookIndex].shelf = value;
+      this.setState({ books: books });
+    }
 
     BooksAPI.update(books[currentLocalBookIndex], value)
   }
