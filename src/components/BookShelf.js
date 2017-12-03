@@ -3,8 +3,8 @@ import Book from './Book'
 
 /**
  * @description
- * @method changeBookShelf Get from the <BookShelf/> tag in ListBooks.js
  * This is a Component that render shelf in Component ListBooks
+ * @method changeBookShelf Get from the <BookShelf/> tag in ListBooks.js
  */
 class BookShelf extends Component {
   render() {

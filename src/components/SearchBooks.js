@@ -5,9 +5,9 @@ import Book from '../components/Book';
 
 /**
  * @description
+ * This is a Component that render search page
  * @method updateQuery
  * @method changeBookShelf Get from the <SearchBooks/> tag in App.js
- * This is a Component that render search page
  */
 class SearchBooks extends Component {
   constructor () {
@@ -19,9 +19,9 @@ class SearchBooks extends Component {
 
   /**
    * @description
-   * @param {string} query The query string from input field
    * If query string exsit and isn't equal to '', search it from server
    * When input field has been clear, set searched results in this page to null
+   * @param {string} query The query string from input field
    */
   updateQuery = (query) => {
     if (query && query.length > 0) {
@@ -33,10 +33,10 @@ class SearchBooks extends Component {
 
   /**
    * @description
-   * @param {string} query The query string from input field
    * If response exsit and its length greater than 0 , filter books with id, imageLinks, authors, title in it
    * and set shelf to be '' for each searched book in order to make select control's default value is 'Move to...'
    * finally, show searched results in this page by this.setState()
+   * @param {string} query The query string from input field
    */
   searchedBooksFromServer = (query) => {
     BooksAPI.search(query, 20).then((response) => {

@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 /**
  * @description
+ * This is a Component that render main page
  * @method classifyBooks
  * @method changeBookShelf Get from the <ListBooks/> tag in App.js
- * This is a Component that render main page
  */
 class ListBooks extends Component {
   /**

@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 
 /**
  * @description
- * @method updateBookShelf Change shelves for current book
  * This is a Component that render books in Component BookShelf
+ * @method updateBookShelf Change shelves for current book
  */
 class Book extends Component {
   /* This state show default value of select control */
