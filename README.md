@@ -16,4 +16,4 @@ Use `npm install` to install dependencies and `npm start` to launch this app.
 
 ### license
 
-This project is released
+This project is released under the [MIT License](https://opensource.org/licenses/MIT).

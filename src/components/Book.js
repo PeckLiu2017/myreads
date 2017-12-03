@@ -6,6 +6,7 @@ import React, { Component } from 'react'
  * This is a Component that render books in Component BookShelf
  */
 class Book extends Component {
+  /* This state show default value of select control */
   state = {
     shelf: ''
   }
@@ -14,13 +15,14 @@ class Book extends Component {
    * @description
    * @param {string} value The shelf to be moved into
    * @method changeBookShelf Get from <Book/> tag in BooksShelf.js
+   * Move current book from current shelf to another shelf
    */
   updateBookShelf(value){
     this.props.changeBookShelf(this.props, value);
     this.setState({ shelf: value });
   }
 
-  /* Set shelf for book once Book Component has been mounted */ 
+  /* Set shelf for book once Book Component has been mounted */
   componentDidMount() {
     const { shelf } = this.props;
     this.setState({ shelf });
