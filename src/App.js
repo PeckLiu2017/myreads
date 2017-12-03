@@ -3,14 +3,14 @@ import SearchBooks from './components/SearchBooks'
 import ListBooks from './components/ListBooks'
 import './App.css'
 import * as BooksAPI from './utils/BooksAPI'
+import { Route } from 'react-router-dom';
 
 class App extends Component {
   constructor () {
     super();
     this.state = {
-      showSearchPage: false,
       books: []
-    };
+    }
   }
 
   componentDidMount() {
@@ -19,6 +19,9 @@ class App extends Component {
     })
   }
 
+  /* 改变书籍所属书架
+   * this.setState 更新本地状态
+   */
   changeBookShelf = (currentHandleBook, value) => {
     const { books } = this.state;
 
@@ -29,13 +32,23 @@ class App extends Component {
     books[currentLocalBookIndex].shelf = value;
     this.setState({ books: books });
 
-    BooksAPI.update(currentHandleBook.id, value)
+    BooksAPI.update(books[currentLocalBookIndex], value)
   }
 
   render() {
     return (
       <div className="app">
-      {this.state.showSearchPage ? <SearchBooks changeBookShelf={this.changeBookShelf}/> : <ListBooks books={this.state.books} changeBookShelf={this.changeBookShelf}/>}
+      <Route exact path="/" render={ () => (
+        <ListBooks
+          books={ this.state.books }
+          changeBookShelf={ this.changeBookShelf }
+        />
+      ) } />
+      <Route path="/search" render={ () => (
+        <SearchBooks
+          changeBookShelf={ this.changeBookShelf }
+        />
+      ) } />
       </div>
     )
   }
