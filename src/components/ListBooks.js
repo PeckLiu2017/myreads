@@ -29,19 +29,19 @@ class ListBooks extends Component {
         <div className="list-books-content">
           <div>
             <BookShelf
-               name="Currently Reading"
-               books={this.classifyBooks('currentlyReading')}
-               changeBookShelf={changeBookShelf}
+              name="Currently Reading"
+              books={this.classifyBooks('currentlyReading')}
+              changeBookShelf={changeBookShelf}
             />
             <BookShelf
-               name="Want to Read"
-               books={this.classifyBooks('wantToRead')}
-               changeBookShelf={changeBookShelf}
+              name="Want to Read"
+              books={this.classifyBooks('wantToRead')}
+              changeBookShelf={changeBookShelf}
             />
             <BookShelf
-               name="Read"
-               books={this.classifyBooks('read')}
-               changeBookShelf={changeBookShelf}
+              name="Read"
+              books={this.classifyBooks('read')}
+              changeBookShelf={changeBookShelf}
             />
           </div>
         </div>

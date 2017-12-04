@@ -17,7 +17,7 @@ class Book extends Component {
    * @method changeBookShelf Get from <Book/> tag in BooksShelf.js
    * Move current book from current shelf to another shelf
    */
-  updateBookShelf(value){
+  updateBookShelf(value) {
     this.props.changeBookShelf(this.props, value);
     this.setState({ shelf: value });
   }

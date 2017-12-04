@@ -43,7 +43,7 @@ class App extends Component {
     /* get index of the book in local machine */
     let currentHandleBookIndex = books.findIndex((book) => {
       return book.id === currentHandleBook.id
-    })
+    });
 
     let tempBooksArray = Object.assign([], books);
 
