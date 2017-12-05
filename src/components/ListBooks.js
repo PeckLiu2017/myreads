@@ -5,17 +5,34 @@ import { Link } from 'react-router-dom';
 /**
  * @description
  * This is a Component that render main page
- * @method classifyBooks
+ * @method getAllShelf
  * @method changeBookShelf Get from the <ListBooks/> tag in App.js
  */
 class ListBooks extends Component {
   /**
    * @description
-   * @param {string} shelf shelf name
-   * Filter books for different shelf
+   * Filter books to create different shelves
+   * @param {array} books local books array form App.js
    */
-  classifyBooks = (shelf) => {
-    return this.props.books.filter((book) => book.shelf === shelf)
+  getAllShelf = () => {
+    const { books } = this.props;
+    return [
+      {
+        id: 'currentlyReading',
+        title: 'Currently Reading',
+        books: books.filter(book => book.shelf === 'currentlyReading')
+      },
+      {
+        id: 'wantToRead',
+        title: 'Want to Read',
+        books: books.filter(book => book.shelf === 'wantToRead')
+      },
+      {
+        id: 'read',
+        title: 'Read',
+        books: books.filter(book => book.shelf === 'read')
+      },
+    ]
   }
 
   render() {
@@ -28,21 +45,14 @@ class ListBooks extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <BookShelf
-              name="Currently Reading"
-              books={this.classifyBooks('currentlyReading')}
-              changeBookShelf={changeBookShelf}
-            />
-            <BookShelf
-              name="Want to Read"
-              books={this.classifyBooks('wantToRead')}
-              changeBookShelf={changeBookShelf}
-            />
-            <BookShelf
-              name="Read"
-              books={this.classifyBooks('read')}
-              changeBookShelf={changeBookShelf}
-            />
+            {
+              this.getAllShelf().map(shelf => (
+                <BookShelf key={shelf.id}
+                  title={shelf.title}
+                  books={shelf.books}
+                  changeBookShelf={changeBookShelf}/>
+              ))
+            }
           </div>
         </div>
         <div className="open-search">
