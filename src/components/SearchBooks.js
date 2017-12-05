@@ -48,7 +48,7 @@ class SearchBooks extends Component {
         showingBooks = response.filter((searchedbook) =>
           searchedbook.id && searchedbook.imageLinks && searchedbook.authors && searchedbook.title
         );
-        /* show local shelf value on the select control if the searched book exists  */ 
+        /* show local shelf value on the select control if the searched book exists  */
         showingBooks.forEach(function(searchedbook) {
           books.forEach(function(localbook) {
             if (searchedbook.id === localbook.id) {
