@@ -40,7 +40,7 @@ class App extends Component {
   changeBookShelf = (currentHandleBook, targetShelf) => {
     const { books } = this.state;
 
-    /* get index of the book in local machine */
+    /* get index of the currentHandleBook in local machine */
     let currentHandleBookIndex = books.findIndex((book) => {
       return book.id === currentHandleBook.id
     });
@@ -80,6 +80,7 @@ class App extends Component {
       ) } />
       <Route path="/search" render={ () => (
         <SearchBooks
+          books={ this.state.books }
           changeBookShelf={ this.changeBookShelf }
         />
       ) } />

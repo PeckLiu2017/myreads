@@ -35,23 +35,32 @@ class SearchBooks extends Component {
    * @description
    * If response exsit and its length greater than 0 , filter books with id, imageLinks, authors, title in it
    * and set shelf to be '' for each searched book in order to make select control's default value is 'Move to...'
+   * if the searched book is exist locally, show its local shelf value on the select control.
    * finally, show searched results in this page by this.setState()
    * @param {string} query The query string from input field
    */
   searchedBooksFromServer = (query) => {
+    const { books } = this.props;
+
     BooksAPI.search(query, 20).then((response) => {
       if (response && response.length > 0) {
         let showingBooks;
-        showingBooks = response.filter((book) =>
-          book.id && book.imageLinks && book.authors && book.title
+        showingBooks = response.filter((searchedbook) =>
+          searchedbook.id && searchedbook.imageLinks && searchedbook.authors && searchedbook.title
         );
-        showingBooks.forEach(function(book) {
-          book.shelf = '';
+        /* show local shelf value on the select control if the searched book exists  */ 
+        showingBooks.forEach(function(searchedbook) {
+          books.forEach(function(localbook) {
+            if (searchedbook.id === localbook.id) {
+              searchedbook.shelf = localbook.shelf;
+            }
+          });
         });
         this.setState({ searchedBooksResult: showingBooks });
      }
     });
   };
+
 
   render() {
     const { changeBookShelf } = this.props;
