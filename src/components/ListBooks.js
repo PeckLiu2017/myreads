@@ -50,6 +50,7 @@ class ListBooks extends Component {
                 <BookShelf key={shelf.id}
                   title={shelf.title}
                   books={shelf.books}
+                  requestState={this.props.requestState}
                   changeBookShelf={changeBookShelf}/>
               ))
             }

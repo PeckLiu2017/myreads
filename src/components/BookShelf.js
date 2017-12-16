@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Book from './Book'
+import Waiting from './Waiting'
 
 /**
  * @description
@@ -12,6 +13,10 @@ class BookShelf extends Component {
       <div className="bookshelf">
         <h2 className="bookshelf-title">{this.props.title}</h2>
         <div className="bookshelf-books">
+          {/* Shelf Loader */}
+          <div className="shelf-loader-box">
+            <Waiting loading={this.props.requestState} size={70} message="LOADING..."/>
+          </div>
           <ol className="books-grid">
             {
               this.props.books.map((book) => (

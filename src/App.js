@@ -15,13 +15,17 @@ class App extends Component {
   constructor () {
     super();
     this.state = {
-      books: []
+      books: [],
+      requestState: 'loading'
     }
   }
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
-      this.setState({ books: books });
+      this.setState({
+         books: books,
+         requestState: 'loaded'
+      });
     })
   }
 
@@ -74,6 +78,7 @@ class App extends Component {
       <div className="app">
       <Route exact path="/" render={ () => (
         <ListBooks
+          requestState={ this.state.requestState }
           books={ this.state.books }
           changeBookShelf={ this.changeBookShelf }
         />

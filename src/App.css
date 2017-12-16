@@ -62,6 +62,25 @@ body, .app {
   font-size: 0;
 }
 
+
+/* Loader */
+
+.shelf-loader-box {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.loader-shelf-menu {
+  margin-left: 10px;
+}
+
+.loader-box-svg {
+  color: #2980b9;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+}
+
 /* search page */
 
 .search-books-bar {
